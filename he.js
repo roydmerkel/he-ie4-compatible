@@ -147,7 +147,10 @@
 
 	/*--------------------------------------------------------------------------*/
 
-	var encode = function(string, options) {
+	function encode() {
+	};
+	
+	encode.encodefn = function(string, options) {
 		options = merge(options, encode.options);
 		var strict = options.strict;
 		if (strict && (regexInvalidRawCodePoint1.test(string) || 
@@ -237,7 +240,10 @@
 		'decimal' : false
 	};
 
-	var decode = function(html, options) {
+	function decode() {
+	};
+	
+	decode.decodefn = function(html, options) {
 		options = merge(options, decode.options);
 		var strict = options.strict;
 		if (strict && (regexInvalidEntity1.test(html) || regexInvalidEntity2.test(html))) {
@@ -328,8 +334,8 @@
 
 	var he = {
 		'version': '1.2.0',
-		'encode': encode,
-		'decode': decode,
+		'encode': encode.encodefn,
+		'decode': decode.decodefn,
 		'escape': escape,
 		'unescape': decode
 	};
